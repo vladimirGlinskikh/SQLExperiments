@@ -20,3 +20,9 @@ WHERE price BETWEEN 540.50 AND 800 AND
 SELECT author, title FROM book WHERE amount BETWEEN 2 AND 14
 ORDER BY author DESC , title ASC;
 
+SELECT title, author
+FROM book
+WHERE title LIKE '_% _%' AND author LIKE '%С.%'
+ORDER BY title ASC;
+
+SELECT amount FROM book GROUP BY amount;
