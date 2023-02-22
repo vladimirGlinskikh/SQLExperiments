@@ -46,20 +46,34 @@ INSERT INTO cities(cities.name, population, founded, country_id)
 VALUES ('Москва', 13097539, 1147, 1),
        ('Санкт-Петербург', 5598486, 1703, 1),
        ('Волгоград', 1001183, 1589, 1),
-       ('Алматы', 2001059, 1854, 2),
-       ('Костанай', 224522, 1879, 2),
-       ('Пекин', 21705000, 1360, 3),
-       ('Шанхай', 24152700, 1291, 3),
-       ('Прага', 1275406, 1867, 4);
+       ('Алматы', 2001059, 1854, 3),
+       ('Костанай', 224522, 1879, 3),
+       ('Пекин', 21705000, 1360, 2),
+       ('Шанхай', 24152700, 1291, 2),
+       ('Прага', 1275406, 1867, 4),
+       ('Ханчжоу', 10000000, 1278, 2);
 
 INSERT INTO companies(companies.name, city_id, revenue, labors)
 VALUES ('Яндекс', 1, 14000000000, 18000),
-       ('JetBrains', 2, 4000000000, 1900),
+       ('JetBrains', 8, 4000000000, 1900),
        ('Красный Октябрь', 3, 100000000, 3600),
        ('Эйр Астана', 4, 33000000, 5000),
        ('Баян Сулу', 5, 6684993, 2200),
-       ('Alibaba', 6, 20802696200, 252000),
-       ('Baidu', 7, 3000000000, 46000),
-       ('test', 8, 3432342323423, 1900);
+       ('Alibaba', 9, 20802696200, 252000),
+       ('Baidu', 9, 3000000000, 46000);
+
+SELECT *
+FROM countries;
+
+SELECT country.name AS 'страна', COUNT(company.id) AS 'количество компаний'
+FROM companies company
+         INNER JOIN cities city
+                    ON city.id = company.city_id
+
+         INNER JOIN countries country
+                    ON city.country_id = country.id
+WHERE company.labors >= 1000
+GROUP BY country.id;
+
 
 
