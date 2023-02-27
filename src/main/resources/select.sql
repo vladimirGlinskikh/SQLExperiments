@@ -52,3 +52,12 @@ SELECT ROUND(AVG(price), 2) AS Средняя_цена,
 FROM book
 WHERE amount
           BETWEEN 5 AND 14;
+
+SELECT author,
+       ROUND(SUM(price * book.amount), 2) AS Стоимость
+FROM book
+WHERE title <> 'Идиот'
+  AND title <> 'Белая гвардия'
+GROUP BY author
+HAVING SUM(price * amount) > 5000
+ORDER BY SUM(price * amount) DESC;
