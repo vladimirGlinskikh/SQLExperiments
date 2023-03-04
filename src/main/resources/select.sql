@@ -72,3 +72,11 @@ SELECT author, title, price
 FROM book
 WHERE price <= (SELECT MIN(price) + 150 FROM book)
 ORDER BY price ASC;
+
+SELECT author, title, amount
+FROM book
+WHERE amount IN
+      (SELECT amount
+       FROM book
+       GROUP BY amount
+       HAVING COUNT(amount) = 1);

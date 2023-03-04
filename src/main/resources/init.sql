@@ -29,10 +29,8 @@ VALUES ('Мастер и Маргарита', 'Булгаков М.А.', 670.99,
 SELECT *
 FROM book;
 
-SELECT author, title, price
-FROM book
-WHERE price <= (SELECT MIN(price) + 150 FROM book)
-ORDER BY price ASC;
+
+
 
 
 
