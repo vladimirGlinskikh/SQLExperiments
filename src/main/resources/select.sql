@@ -84,3 +84,12 @@ WHERE amount IN
 SELECT author, title, price
 FROM book
 WHERE price < ANY (SELECT MIN(price) FROM book GROUP BY author);
+
+SELECT title,
+       author,
+       amount,
+       (SELECT MAX(amount)
+        FROM book) - amount AS Заказ
+FROM book
+WHERE ABS(amount - (SELECT MAX(amount) FROM book)) > 0
+HAVING Заказ > 0;
