@@ -121,3 +121,7 @@ SELECT title, author, price, amount
 FROM supply
 WHERE author NOT IN (SELECT author
                      FROM book);
+
+UPDATE book
+SET price = 0.9 * price
+WHERE amount BETWEEN 5 AND 10;
