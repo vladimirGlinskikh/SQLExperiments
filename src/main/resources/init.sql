@@ -13,7 +13,8 @@ CREATE TABLE book
     title   VARCHAR(50),
     author  VARCHAR(30),
     price   DECIMAL(8, 2),
-    amount  INT
+    amount  INT,
+    buy     INT
 );
 
 CREATE TABLE supply
@@ -47,7 +48,6 @@ FROM book;
 
 SELECT *
 FROM supply;
-
 
 
 
