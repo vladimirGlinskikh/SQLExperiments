@@ -135,3 +135,11 @@ SET book.amount = book.amount + supply.amount,
     book.price  = ((book.price + supply.price) / 2)
 WHERE book.title = supply.title
   AND book.author = supply.author;
+
+DELETE
+FROM supply
+WHERE author IN
+      (SELECT author
+       FROM book
+       GROUP BY author
+       HAVING SUM(amount) >= 10);
