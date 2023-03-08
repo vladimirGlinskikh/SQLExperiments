@@ -150,3 +150,8 @@ SELECT author,
        (SELECT ROUND(AVG(amount)) FROM book) AS amount
 FROM book
 WHERE amount < (SELECT ROUND(AVG(amount)) FROM book);
+
+SELECT name, city, per_diem, date_first, date_last
+FROM trip
+WHERE trip.name LIKE '_%а _%'
+ORDER BY date_last DESC;
