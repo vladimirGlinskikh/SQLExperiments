@@ -76,10 +76,6 @@ SELECT *
 FROM book;
 
 
-SELECT name, city, per_diem, date_first, date_last
-FROM trip
-WHERE trip.name LIKE '_%а _%'
-ORDER BY date_last DESC;
 
 
 

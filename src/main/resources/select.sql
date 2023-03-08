@@ -155,3 +155,8 @@ SELECT name, city, per_diem, date_first, date_last
 FROM trip
 WHERE trip.name LIKE '_%а _%'
 ORDER BY date_last DESC;
+
+SELECT DISTINCT trip.name
+FROM trip
+WHERE city = 'Москва'
+ORDER BY trip.name ASC;
