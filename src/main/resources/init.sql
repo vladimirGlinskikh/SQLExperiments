@@ -75,7 +75,8 @@ VALUES ('Баранов П.Е.', 'Москва', 700, '2020-01-12', '2020-01-17'
 SELECT *
 FROM book;
 
-
+SELECT *
+FROM trip;
 
 
 
