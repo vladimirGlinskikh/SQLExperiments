@@ -1,35 +1,35 @@
 DROP DATABASE IF EXISTS stepik;
 
-CREATE DATABASE IF NOT EXISTS stepik;
-
-USE stepik;
+CREATE DATABASE stepik;
 
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS supply;
 DROP TABLE IF EXISTS trip;
 
-CREATE TABLE book
+\connect stepik;
+
+CREATE TABLE IF NOT EXISTS book
 (
-    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id SERIAL PRIMARY KEY,
     title   VARCHAR(50),
     author  VARCHAR(30),
     price   DECIMAL(8, 2),
     amount  INT
 );
 
-CREATE TABLE supply
+CREATE TABLE IF NOT EXISTS supply
 (
-    supply_id INT PRIMARY KEY AUTO_INCREMENT,
+    supply_id SERIAL PRIMARY KEY,
     title     VARCHAR(50),
     author    VARCHAR(30),
     price     DECIMAL(8, 2),
     amount    INT
 );
 
-CREATE TABLE trip
+CREATE TABLE IF NOT EXISTS trip
 (
-    trip_id    INT PRIMARY KEY AUTO_INCREMENT,
-    `name`     VARCHAR(30),
+    trip_id    SERIAL PRIMARY KEY,
+    "name"     VARCHAR(30),
     city       VARCHAR(25),
     per_diem   DECIMAL(8, 2),
     date_first DATE,
@@ -49,7 +49,7 @@ VALUES ('Лирика', 'Пастернак Б.Л.', 518.99, 2),
        ('Белая гвардия', 'Булгаков М.А.', 540.50, 7),
        ('Идиот', 'Достоевский Ф.М.', 360.80, 3);
 
-INSERT INTO trip(trip.name, city, per_diem, date_first, date_last)
+INSERT INTO trip("name", city, per_diem, date_first, date_last)
 VALUES ('Баранов П.Е.', 'Москва', 700, '2020-01-12', '2020-01-17'),
        ('Абрамова К.А.', 'Владивосток', 450, '2020-01-14', '2020-01-27'),
        ('Семенов И.В.', 'Москва', 700, '2020-01-23', '2020-01-31'),
@@ -70,13 +70,3 @@ VALUES ('Баранов П.Е.', 'Москва', 700, '2020-01-12', '2020-01-17'
        ('Федорова А.Ю.', 'Томск', 450, '2020-06-20', '2020-06-26'),
        ('Абрамова К.А.', 'Владивосток', 450, '2020-07-02', '2020-07-13'),
        ('Баранов П.Е.', 'Воронеж', 450, '2020-07-19', '2020-07-25');
-
-
-SELECT *
-FROM book;
-
-SELECT *
-FROM trip;
-
-
-
